@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getBookData } from "../../Api";
+import { Card, Image, Button } from "antd";
 
 const BookSquare = () => {
+  const [books, SetBooks] = useState([]);
+  useEffect(() => {
+    const getBooks = async () => {
+      const book = await getBookData();
+      if (book?.books) {
+        SetBooks((prev) => [...prev, ...book?.books]);
+      }
+    };
+    getBooks();
+  }, []);
   return (
-    <div className=" text-green-700">
-      <h1 className="text-red-500">this is the main book show pahe</h1>
-      <p className="text-green-700">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam ipsa recusandae facilis sit repellat saepe id non voluptatum facere modi optio nisi tempore enim quibusdam repudiandae, amet a esse. Sequi velit dolores quo? Praesentium similique minus iure facilis ad architecto. Numquam tenetur necessitatibus maiores, tempora illo aspernatur velit assumenda asperiores doloremque animi, omnis eius. Vitae et esse ipsam voluptatum omnis, consectetur ex error odit dignissimos provident nulla sit. Officia incidunt dignissimos ut. Amet soluta sunt reprehenderit officia natus praesentium rem cupiditate, mollitia, ab voluptatum sequi odio. Dolorum quasi dolorem sunt tenetur nihil, distinctio rerum, molestias error iusto voluptas natus accusantium?</p>
+    <div className="flex flex-wrap mx-3 m-5">
+      {books?.map((book, idx) => (
+        <Card
+          className="max-w-xs mx-2"
+          title={book.title}
+          key={idx}
+          cover={<Image className="" src={book.image} />}
+          actions={[<Button>Add To Cart</Button>]}
+        ></Card>
+      ))}
     </div>
   );
 };
