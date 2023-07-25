@@ -1,6 +1,9 @@
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { closeaddBook } from "../store/bookReducerSlice";
 
 const AddBook = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       titleName: "",
@@ -11,6 +14,7 @@ const AddBook = () => {
     onSubmit: (values) => {
       console.log("values", JSON.stringify(values));
       alert(JSON.stringify(values, null, 2));
+      dispatch(closeaddBook());
     },
   });
 

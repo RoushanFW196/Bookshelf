@@ -24,7 +24,7 @@ const NavbarComponent = () => {
             src="book-logo.png"
             alt="bookstore-logo"
             width={100}
-            height={60}
+            height={50}
           ></Image>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -52,7 +52,9 @@ const NavbarComponent = () => {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-success" style={{border:'none'}}><SearchOutlined /></Button>
+              <Button variant="outline-success" style={{ border: "none" }}>
+                <SearchOutlined />
+              </Button>
             </Form>
           </Nav>
 
