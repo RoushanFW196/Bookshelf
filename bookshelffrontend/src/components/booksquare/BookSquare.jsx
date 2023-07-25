@@ -30,13 +30,13 @@ const BookSquare = () => {
           actions={[<Button>Add To Cart</Button>]}
         ></Card>
       ))}
-      <AddBook />
       {isAddBook ? (
         <Modal
-          title="Example Modal"
+          title={<p style={{ textAlign: "center" }}>Add A Book</p>}
           open={isAddBook}
           onCancel={() => dispatch(closeaddBook())}
-          width={600}
+          cancelButtonProps={{ style: { display: "none" } }}
+          width={400}
         >
           {<AddBook />}
         </Modal>

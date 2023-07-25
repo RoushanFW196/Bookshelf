@@ -7,9 +7,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useDispatch } from "react-redux";
 import { addBook } from "../../store/bookReducerSlice";
+import { Image } from "antd";
+import { ShoppingCartOutlined, SearchOutlined } from "@ant-design/icons";
 const NavbarComponent = () => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <Navbar
       collapseOnSelect
@@ -18,11 +19,18 @@ const NavbarComponent = () => {
       style={{ width: "100%" }}
     >
       <Container style={{ maxWidth: "100%" }}>
-        <Navbar.Brand href="#home">Bookstorelogo</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <Image
+            src="book-logo.png"
+            alt="bookstore-logo"
+            width={100}
+            height={60}
+          ></Image>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link onClick={()=>dispatch(addBook())}>Add Book</Nav.Link>
+            <Nav.Link onClick={() => dispatch(addBook())}>Add Book</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -44,7 +52,7 @@ const NavbarComponent = () => {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-success">Search</Button>
+              <Button variant="outline-success" style={{border:'none'}}><SearchOutlined /></Button>
             </Form>
           </Nav>
 
@@ -53,7 +61,9 @@ const NavbarComponent = () => {
             <Nav.Link href="/signup">Sign Up</Nav.Link>
             <Nav.Link href="/profile">Profile</Nav.Link>
             <Nav.Link eventKey={2} href="/cart">
-              Cart
+              <ShoppingCartOutlined
+                style={{ fontSize: "24px", color: "#1890ff" }}
+              />
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
