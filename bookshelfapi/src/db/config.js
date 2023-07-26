@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
+require('dotenv').config();
+const DB=process.env.db;
 
-mongoose
-  .connect(
-    "mongodb+srv://roushankumar6338bookstore:IhNTpImo3arSlDEu@bookstorecluster.b1tditx.mongodb.net/BookStore",
-    {}
-  )
-  .then(() => console.log("Connected to"))
-  .catch((e) => console.log("not connected", e.message));
+mongoose.connect(DB,{useUnifiedTopology: true,useNewUrlParser: true,}).then(() => console.log("Connected to")).catch((e) => console.log("not connected", e.message));
+
