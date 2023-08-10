@@ -42,10 +42,10 @@ router.post("/signup",async function(req, res){
           profile_pic:req.body.profile_pic
         });
     
-        return res.status(201).json({ user: newuser});
+        return res.status(201).json({ user: newuser,data:true});
       } catch (err) {
         console.log('error',err)
-        res.status(404).json({ err: "something went wrong" });
+        res.status(404).json({ err: "something went wrong",data:false });
       }
 })
 
